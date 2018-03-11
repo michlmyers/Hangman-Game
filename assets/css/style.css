@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 800px;
+    padding: 30px;
+    color:  rgb(134, 245, 7);
+    margin-left: 15%;
+}
+
+body {
+    background-color: black;
+}
+
+.header {
+    font-weight: bolder;
+    text-align: center;
+    font-family: 'Monoton', cursive;
+    font-size: 30px;
+    padding: 20px;
+}
+
+#zombiPic {
+    float: left;
+    height: 300px;
+    widows: 300px;
+}
+
+.game {
+    float: right;
+    padding: 20px;
+    font-size: 20px;
+    font-family: 'Flavors', cursive;
+}
+
+@media  screen  and  (max-width:640px) {
+    .container {
+        width:100%;
+    }
+    .header {
+        width: 100%;
+    }
+    .image {
+        width: 100%;
+    }  
+    .game {
+        width: 100%;
+        float: none;
+    }
+}
