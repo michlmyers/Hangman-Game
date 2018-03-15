@@ -8,7 +8,7 @@
     <title>Zombie Hangman</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="javascript/game.js"></script>
+    <script src="assets/javascript/game.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Flavors|Monoton" rel="stylesheet">
 </head>
 
@@ -23,16 +23,19 @@
             <img id="zombiPic" src="assets/images/wdhang.png" alt="Hanging Zombie">
         </section>
 
-        <section class="game">
-            <p>Press any key to get started!</p>
+        <section class="gameGo">
+            <p>Press any key to get started!
+            </p>
             <br>
-            <p>Wins</p>
+            <p id="playerWins">Wins</p>
             <br>
-            <p>Current Word</p>
+            <p>
+            <div id="currentPlay"> Current Word</div>
+            </p>
             <br>
-            <p>Number of guesses remaining</p>
+            <p id="guesses">Number of guesses remaining</p>
             <br>
-            <p>Letters already guessed</p>
+            <p id="lettersGuessed">Letters already guessed</p>
         </section>
 
     </section>
