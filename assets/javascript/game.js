@@ -5,7 +5,6 @@ var lettersInWord = [];//empty array for letters in gameWord
 var playWord = [];//will adjust based on randomly selected word
 var blanksAndCorrect = [];//this will adjust spaces with correct user letter input
 var wrongLetters = [];//this will be incorrect user guesses 
-var userGuess ;//I'm hoping this captures the user key input
 
 //CREATING GAME COUNTERS
 var winsCount = 0;//win counter. Starts at zero
@@ -21,13 +20,17 @@ function startGame(){
     playWord = lettersInWord.length;//should set the number of blank spaces
         for (var i =0; i<playWord; i++){
             blanksAndCorrect.push("_  ");
-        }
+        }  
 
 //COLLECT USER GUESSES
-    window.onkeyup = function(){    
-    var userGuess = event.key;//this reads whatever key the user presses
-        for (var i =0; i<userGuess; i++){
-        console.log(userGuess);
+    window.onkeyup = function(event){    
+    blanksAndCorrect = event.key;//this reads whatever key the user presses
+        for (var j =0; j<blanksAndCorrect; j++){
+            //STRUGGLING HERE. CONSOLE CAN LOG THE USER KEY EVENT BUT I CAN'T SEEM TO MATCH IT AND PLACE TO HTML
+         //   if ((blanksAndCorrect[j]) === (blanksAndCorrect[i])){
+            //    window.getElementById("currentPlay").innerHTML = blanksAndCorrect[j].push("  ");
+                guessesLeft = guessesLeft--;
+           // }
         }
  //   console.log(userGuess);    
     //if (lettersInWord.indexOf(userGuess) === true){
@@ -57,6 +60,20 @@ console.log(blanksAndCorrect);
 
 //CALLING THE FUNCTION TO RUN THE GAME****************************************************************
 startGame();
+
+
+var remainingLetters = lettersInWord.length;//should take in the amount of letters not yet guessed
+/* NOPE THIS DIDN'T WORK EITHER
+while (remainingLetters > 0){
+
+    (blanksAndCorrect.join(" "));
+    for (var j = 0; j < lettersInWord.length; j++) {
+        if (lettersInWord[i] === blanksAndCorrect[j]) {
+            playWord[i] = blanksAndCorrect;
+            remainingLetters--;
+        }
+    }
+}
 
 
 //BS BELOW
