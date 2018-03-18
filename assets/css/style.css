@@ -25,6 +25,11 @@ body {
     float: left;
     height: 300px;
     widows: 300px;
+    border: 3px solid rgb(255, 160, 105);
+}
+
+#currentPlay {
+    margin-top: 5px;
 }
 
 .gameGo {
@@ -32,6 +37,7 @@ body {
     padding: 20px;
     font-size: 20px;
     font-family: 'Flavors', cursive;
+    border: 3px solid rgb(255, 160, 105);
 }
 
 @media  screen  and  (max-width:640px) {
