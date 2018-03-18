@@ -114,35 +114,21 @@ function winLose(){
 //CALLING THE FUNCTION TO RUN THE GAME****************************************************************
 startGame();
 
-/* window.addEventListener('keyup', function(e){
-    var userKey = event.key;
-    for (var i=0; i<lettersInWord.length; i++)
-    {
-        if(userKey === lettersInWord)
-        {   
-            //Test and debug
-            console.log(blanksAndSuccesses);
-
-            userGuesses();
-            winLose();
-        }         
-    } 
-},true);//SOMETHING NOT READING PROPERLY HERE****** FIX ME ***!!!!!!!!!!!!!!!
-*/
 document.onkeyup = function(event){
 
     var userKey = event.key;
     console.log(userKey);
     for (var i=0; i<lettersInWord.length; i++)
     {
-        if(event.keyCode === lettersInWord[i])
+        if(userKey === lettersInWord[i])
         {   
-            document.querySelector("gameGo").innerHTML = userKey;
+            //var splicedAnswer = blanksAndSuccesses.splice(lettersInWord, userKey);//this line 
+            document.getElementById("currentPlay").innerHTML = blanksAndSuccesses + userKey;
             //Test and debug
             console.log(event);
             console.log(blanksAndSuccesses);
 
-        //    gameSound.play();
+            //gameSound.play();
             userGuesses();
             winLose();
         }         
