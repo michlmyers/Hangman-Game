@@ -132,9 +132,10 @@ startGame();
 document.onkeyup = function(event){
 
     var userKey = event.key;
+    console.log(userKey);
     for (var i=0; i<lettersInWord.length; i++)
     {
-        if(event.keyCode === lettersInWord)
+        if(event.keyCode === lettersInWord[i])
         {   
             document.querySelector("gameGo").innerHTML = userKey;
             //Test and debug
