@@ -6,7 +6,7 @@ var lettersInWord = [];//empty array for letters in gameWord
 var playWord = [];//will adjust based on randomly selected word
 var blanksAndSuccesses = [];//this will adjust spaces with correct user letter input
 var wrongLetters = [];//this will be incorrect user guesses 
-var remainingLetters = 0;
+var remainingLetters = 0;//I think my blanksAndSuccesses covers this ***CHECK IT OUT MIKE***
 
 //CREATING GAME COUNTERS
 var winsCount = 0;//win counter. Starts at zero
@@ -60,7 +60,7 @@ function startGame(){
 }            
 
 function userGuesses(userKey){
-    console.log("FUNCTION WORKKING DICK");
+    console.log("FUNCTION WORKKING");
     //USER KEY SHOULD BE COMPARED TO THE GAMEWORD
         if(gameWord.indexOf(userKey) > -1) //If user key exists in the gameword
         {
@@ -72,20 +72,19 @@ function userGuesses(userKey){
                 }
             }
             //Test and Debug
-            consolg.log(blanksAndSuccesses);
+            console.log(blanksAndSuccesses);
         }
         //Wrong keys
         else
         {
-            wrongLetters
             wrongLetters.push(userKey);
             guessesLeft--;
             //Changes HTML
 			document.getElementById("guesses").innerHTML = guessesLeft;
             document.getElementById("lettersGuessed").innerHTML = wrongLetters;
-            //Test / Debug
-			console.log('Wrong Letters = ' + wrongLetters);
-			console.log('Guesses left are ' + guessesLeft);
+            //Test and Debug
+			console.log("Wrong Letters are " + wrongLetters);
+			console.log("Guesses left are " + guessesLeft);
         } 
 }
 
@@ -99,21 +98,30 @@ function winLose(){
             resetGame();
         }    
         //Guesses left reach zero you lose
-            
+        else if(guessesLeft === 0){
+            alert("Your brains have been eaten!!!");
+            //I want to change the pic and play audio. CSS change? ***COME BACK TO THIS MIKE***
+            resetGame();
+        }           
 }
 
 
 //CALLING THE FUNCTION TO RUN THE GAME****************************************************************
 startGame();
 
+//window.addEventListener("keyup", event, true);//SOMETHING NOT READING PROPERLY HERE****** FIX ME ***!!!!!!!!!!!!!!!
+window.onkeyup = function(event){
 
-/*
-document.onkeyup = function(event){
-    var blanksAndSuccesses = event.key;
-        for (var i=0;i<lettersInWord.length; i++)
-            {
-           //     if (blanksAndSuccesses === lettersInWord)
-                   // {
-              //          console.log(blanksAndSuccesses);
-                   // }
-            } */ 
+    var userKey = event.key;
+    for (var i=0; i<lettersInWord.length; i++)
+    {
+        if(userKey === lettersInWord)
+        {   
+            //Test and debug
+            console.log(blanksAndSuccesses);
+
+            userGuesses();
+            winLose();
+        }           
+    } 
+}    
