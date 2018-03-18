@@ -60,7 +60,46 @@ function startGame(){
 }            
 
 function userGuesses(userKey){
+    console.log("FUNCTION WORKKING DICK");
+    //USER KEY SHOULD BE COMPARED TO THE GAMEWORD
+        if(gameWord.indexOf(userKey) > -1) //If user key exists in the gameword
+        {
+            for(var i = 0; i< playWord; i++) //Loop on number of blank spaces
+            {
+                if(lettersInWord[i] === userKey)//This should populate the blanks and guesses letters
+                {
+                    document.getElementById("currentPlay").innerHTML = blanksAndSuccesses.join(' ');
+                }
+            }
+            //Test and Debug
+            consolg.log(blanksAndSuccesses);
+        }
+        //Wrong keys
+        else
+        {
+            wrongLetters
+            wrongLetters.push(userKey);
+            guessesLeft--;
+            //Changes HTML
+			document.getElementById("guesses").innerHTML = guessesLeft;
+            document.getElementById("lettersGuessed").innerHTML = wrongLetters;
+            //Test / Debug
+			console.log('Wrong Letters = ' + wrongLetters);
+			console.log('Guesses left are ' + guessesLeft);
+        } 
+}
 
+function winLose(){
+        //Blank spaces fill and you win
+        if( blanksAndSuccesses === playWord){
+            winsCount++;
+            //Changes HTML
+            document.getElementById("playerWins").innerHTML = winsCount;
+            //I want to change the pic and play audio. CSS change? ***COME BACK TO THIS MIKE***
+            resetGame();
+        }    
+        //Guesses left reach zero you lose
+            
 }
 
 
