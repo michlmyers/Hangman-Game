@@ -129,14 +129,16 @@ startGame();
     } 
 },true);//SOMETHING NOT READING PROPERLY HERE****** FIX ME ***!!!!!!!!!!!!!!!
 */
-window.onkeyup = function(e){
+document.onkeyup = function(event){
 
     var userKey = event.key;
     for (var i=0; i<lettersInWord.length; i++)
     {
-        if(userKey === lettersInWord)
+        if(event.keyCode === lettersInWord)
         {   
+            document.querySelector("gameGo").innerHTML = userKey;
             //Test and debug
+            console.log(event);
             console.log(blanksAndSuccesses);
 
         //    gameSound.play();
