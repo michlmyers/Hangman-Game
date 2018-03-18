@@ -12,6 +12,11 @@ var remainingLetters = 0;//I think my blanksAndSuccesses covers this ***CHECK IT
 var winsCount = 0;//win counter. Starts at zero
 var guessesLeft = 10; //guesses remaining counter. 10 per word
 
+//GAME AUDIO IF I GET THERE
+//var gameSound = new Audio('assets/audio/gameaudio.wav');
+//var winSound = 
+//var loseSound = 
+
 //MAIN GAME FUNCTION**************************************************************************************
 function resetGame(){
 
@@ -109,9 +114,7 @@ function winLose(){
 //CALLING THE FUNCTION TO RUN THE GAME****************************************************************
 startGame();
 
-//window.addEventListener("keyup", event, true);//SOMETHING NOT READING PROPERLY HERE****** FIX ME ***!!!!!!!!!!!!!!!
-window.onkeyup = function(event){
-
+/* window.addEventListener('keyup', function(e){
     var userKey = event.key;
     for (var i=0; i<lettersInWord.length; i++)
     {
@@ -122,6 +125,23 @@ window.onkeyup = function(event){
 
             userGuesses();
             winLose();
-        }           
+        }         
+    } 
+},true);//SOMETHING NOT READING PROPERLY HERE****** FIX ME ***!!!!!!!!!!!!!!!
+*/
+window.onkeyup = function(e){
+
+    var userKey = event.key;
+    for (var i=0; i<lettersInWord.length; i++)
+    {
+        if(userKey === lettersInWord)
+        {   
+            //Test and debug
+            console.log(blanksAndSuccesses);
+
+        //    gameSound.play();
+            userGuesses();
+            winLose();
+        }         
     } 
 }    
