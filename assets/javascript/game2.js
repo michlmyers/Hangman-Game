@@ -1,6 +1,6 @@
 //ALTERNATE ATTEMPT BUILDING THE JAVASCRIPT CODE
 //CREATING GLOBAL VARIABLES 
-var gameWords = ["romero", "brains", "walkingdead", "apocalypse", "undead"];//selection of words
+var gameWords = ["romero", "brains", "walkingdead", "apocalypse", "undead", "guts"];//selection of words
 var gameWord = "";//word that will be put into play
 var lettersInWord = [];//empty array for letters in gameWord
 var playWord = [];//will adjust based on randomly selected word
@@ -49,8 +49,32 @@ function startGame(){
     
     //CREATE HTML
             document.getElementById("currentPlay").innerHTML = blanksAndSuccesses.join("  ");
+            document.getElementById("playerWins").innerHTML = winsCount;
+            document.getElementById("guesses").innerHTML = guessesLeft;
+    
+    //LOGGING AND DEBUGGING
+            console.log(gameWord);
+            console.log(lettersInWord); 
+            console.log(playWord);
+            console.log(blanksAndSuccesses);         
 }            
+
+function userGuesses(userKey){
+
+}
 
 
 //CALLING THE FUNCTION TO RUN THE GAME****************************************************************
 startGame();
+
+
+/*
+document.onkeyup = function(event){
+    var blanksAndSuccesses = event.key;
+        for (var i=0;i<lettersInWord.length; i++)
+            {
+           //     if (blanksAndSuccesses === lettersInWord)
+                   // {
+              //          console.log(blanksAndSuccesses);
+                   // }
+            } */ 
