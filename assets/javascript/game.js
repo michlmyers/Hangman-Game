@@ -5,6 +5,7 @@ var lettersInWord = [];//empty array for letters in gameWord
 var playWord = [];//will adjust based on randomly selected word
 var blanksAndCorrect = [];//this will adjust spaces with correct user letter input
 var wrongLetters = [];//this will be incorrect user guesses 
+var remainingLetters = 0;
 
 //CREATING GAME COUNTERS
 var winsCount = 0;//win counter. Starts at zero
@@ -62,7 +63,7 @@ console.log(blanksAndCorrect);
 startGame();
 
 
-var remainingLetters = lettersInWord.length;//should take in the amount of letters not yet guessed
+remainingLetters = lettersInWord.length;//should take in the amount of letters not yet guessed
 /* NOPE THIS DIDN'T WORK EITHER
 while (remainingLetters > 0){
 
