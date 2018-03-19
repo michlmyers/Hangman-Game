@@ -122,8 +122,11 @@ document.onkeyup = function(event){
     {
         if(userKey === lettersInWord[i])
         {   
-            //var splicedAnswer = blanksAndSuccesses.splice(lettersInWord, userKey);//this line 
-            document.getElementById("currentPlay").innerHTML = blanksAndSuccesses + userKey;
+            //blanksAndSuccesses.splice(lettersInWord, userKey);//this line is off
+            //For the record I attempted to splice, pop, concat, replace, and idexof to leverage the userkey. 
+            document.getElementById("currentPlay").innerHTML = blanksAndSuccesses += userKey;
+            //In the above line I want to display the updated blank/letter combo but my splice isn't working
+            //I didn't want to use += but it's at least keeping accurate letter guesses into the element
             //Test and debug
             console.log(event);
             console.log(blanksAndSuccesses);
@@ -131,6 +134,6 @@ document.onkeyup = function(event){
             //gameSound.play();
             userGuesses();
             winLose();
-        }         
+        }  
     } 
 }    
