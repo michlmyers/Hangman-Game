@@ -1,9 +1,7 @@
-//ALTERNATE ATTEMPT BUILDING THE JAVASCRIPT CODE
 //CREATING GLOBAL VARIABLES 
 var gameWords = ["romero", "brains", "walkingdead", "apocalypse", "undead", "guts"];//selection of words
 var gameWord = "";//word that will be put into play
 var lettersInWord = [];//empty array for letters in gameWord
-var playWord = [];//will adjust based on randomly selected word
 var blanksAndSuccesses = [];//this will adjust spaces with correct user letter input
 var wrongLetters = [];//this will be incorrect user guesses 
 var remainingLetters = 0;//I think my blanksAndSuccesses covers this ***CHECK IT OUT MIKE***
@@ -23,7 +21,6 @@ function resetGame(){
     //SETTING UP GAME FUNCTIONS
         gameWord = gameWords[Math.floor(Math.random() * gameWords.length)];//selecting a word from the array
         lettersInWord = gameWord.split("");//creating individual letter array
-        playWord = lettersInWord.length;//should set the number of blank spaces
 
     // COUNTER RESETS
         guessesLeft= 10;// back to the original guesses left count
@@ -38,7 +35,6 @@ function startGame(){
     //SETTING UP GAME FUNCTIONS
         gameWord = gameWords[Math.floor(Math.random() * gameWords.length)];//selecting a word from the array
         lettersInWord = gameWord.split("");//creating individual letter array
-        playWord = lettersInWord.length;//should set the number of blank spaces
 
     // COUNTER RESETS
         guessesLeft= 10;// back to the original guesses left count
@@ -46,49 +42,41 @@ function startGame(){
         blanksAndSuccesses=[];//clear blanks from prior word
 
     //POPULATE BLANKS
-            for (var i =0; i<playWord; i++)
+            for (var i =0; i<lettersInWord.length; i++)
             {
-                blanksAndSuccesses.push("_  ");
+                blanksAndSuccesses.push("_ ");
                 document.getElementById("currentPlay").innerHTML = blanksAndSuccesses;
             }  
     
     //CREATE HTML
-            document.getElementById("currentPlay").innerHTML = blanksAndSuccesses.join("  ");
             document.getElementById("playerWins").innerHTML = winsCount;
             document.getElementById("guesses").innerHTML = guessesLeft;
     
     //LOGGING AND DEBUGGING
             console.log(gameWord);
             console.log(lettersInWord); 
-            console.log(playWord);
             console.log(blanksAndSuccesses);         
 }            
 
 function userGuesses(userKey){
     console.log("FUNCTION WORKKING");
-    //USER KEY SHOULD BE COMPARED TO THE GAMEWORD
-        if(gameWord.indexOf(userKey) > -1) //If user key exists in the gameword
-        {
-            for(var i = 0; i< playWord; i++) //Loop on number of blank spaces
-            {
-                if(lettersInWord[i] === userKey)//This should populate the blanks and guesses letters
-                {
+    //THIS PUSHES UPDATED BLANKSANDSUCCESSES TO HTML
                     document.getElementById("currentPlay").innerHTML = blanksAndSuccesses.join(' ');
-                }
-             }
-        }
 }
 
 function winLose(){
-        //Blank spaces fill and you win
-        if( blanksAndSuccesses === playWord){
+        //Blank spaces fill and you win ****THIS IS NOT WORKING though function is being read
+        console.log("I am being read");
+        //Something off about the comparison of B&A to Gameword / letters in word
+        if(blanksAndSuccesses === lettersInWord){
+            console.log("my wins are working");
             winsCount++;
             //Changes HTML
             document.getElementById("playerWins").innerHTML = winsCount;
             //I want to change the pic and play audio. CSS change? ***COME BACK TO THIS MIKE***
             resetGame();
         }    
-        //Guesses left reach zero you lose
+        //Guesses left reach zero you lose ****THIS IS WORKING
         else if(guessesLeft === 0){
             alert("Your brains have been eaten!!!");
             //I want to change the pic and play audio. CSS change? ***COME BACK TO THIS MIKE***
@@ -103,24 +91,22 @@ startGame();
 document.onkeyup = function(event){
 
     var userKey = event.key;
-    console.log(userKey);
     for (var i=0; i<lettersInWord.length; i++)
     {
         if(userKey === lettersInWord[i])
         {   
-            // this now splices correct letter guesses to html ****
-            document.getElementById("currentPlay").innerHTML = blanksAndSuccesses.splice(i, 1, userKey);
+            // WORKING THIS ADDS CORRECT LETTER TO BLANKSANDSUCCESSES ARRAY
+            blanksAndSuccesses.splice(i, 1, userKey);
             //Test and debug
-            console.log(event);
-            console.log(blanksAndSuccesses);
 
             //gameSound.play();
-            // Here I want to pass in a userkey
             userGuesses(userKey);
-            winLose();
+           winLose();
         }  
     } 
-    if (userKey !== lettersInWord[i]) {
+    
+   if (userKey !== lettersInWord) 
+    {
         wrongLetters.push(userKey);
         guessesLeft--;
         //Changes HTML
@@ -129,6 +115,7 @@ document.onkeyup = function(event){
         //Test and Debug
         console.log("Wrong Letters are " + wrongLetters);
         console.log("Guesses left are " + guessesLeft);
+        userGuesses(userKey);
         winLose();
     }
-}    
+}  
