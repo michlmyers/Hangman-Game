@@ -11,7 +11,7 @@ var winsCount = 0;//win counter. Starts at zero
 var guessesLeft = 10; //guesses remaining counter. 10 per word
 
 //GAME AUDIO IF I GET THERE
-//var gameSound = new Audio('assets/audio/gameaudio.wav');
+//var gameSound = new Audio('audio/gameaudio.wav');
 //var winSound = 
 //var loseSound = 
 
@@ -59,16 +59,15 @@ function startGame(){
 }            
 
 function userGuesses(userKey){
-    console.log("FUNCTION WORKKING");
     //THIS PUSHES UPDATED BLANKSANDSUCCESSES TO HTML
                     document.getElementById("currentPlay").innerHTML = blanksAndSuccesses.join(' ');
 }
 
 function winLose(){
         //Blank spaces fill and you win ****THIS IS NOT WORKING though function is being read
-        console.log("I am being read");
+        console.log("I am being read", blanksAndSuccesses, lettersInWord);
         //Something off about the comparison of B&A to Gameword / letters in word
-        if(blanksAndSuccesses === lettersInWord){
+        if(blanksAndSuccesses.join() === lettersInWord.join()){
             console.log("my wins are working");
             winsCount++;
             //Changes HTML
@@ -90,12 +89,12 @@ startGame();
 
 document.onkeyup = function(event){
 
-    var userKey = event.key;
+    var userKey = event.key.toLowerCase();
     for (var i=0; i<lettersInWord.length; i++)
     {
         if(userKey === lettersInWord[i])
         {   
-            // WORKING THIS ADDS CORRECT LETTER TO BLANKSANDSUCCESSES ARRAY
+            // WORKING THIS ADDS CORRECT LETTER TO BLANKSANDSUCCESSES ARRAY and removes an underscore
             blanksAndSuccesses.splice(i, 1, userKey);
             //Test and debug
 
